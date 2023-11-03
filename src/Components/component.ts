@@ -1,0 +1,184 @@
+import { motion } from "framer-motion";
+import styled from "styled-components";
+import { makeImagePath } from "../util";
+
+export const Circle = styled(motion.div)`
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.bgColors.primary};
+`;
+
+export const Nav = styled(motion.nav)``;
+
+export const Header = styled(motion.header)`
+  background-color: transparent;
+  position: fixed;
+  width: 100%;
+  font-size: 1.5rem;
+  top: 0;
+
+  nav {
+    background-image: linear-gradient(
+      180deg,
+      rgba(20, 20, 20, 0.7) 10%,
+      transparent
+    );
+    height: 68px;
+  }
+  ul {
+    padding: 0 4vw;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+
+    .header-ul__column1,
+    .header-ul__column2 {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      li.search-bar {
+        display: flex;
+        align-items: center;
+      }
+      li {
+        position: relative;
+        margin-left: 18px;
+        position: relative;
+        ${Circle} {
+          margin: 0 auto;
+          margin-top: 10px;
+          left: 0;
+          right: 0;
+        }
+
+        .searchBar-btn {
+          position: absolute;
+          left: 90%;
+        }
+      }
+      li.svg-logo {
+        margin: 0;
+        margin-left: -14px;
+        a.svg {
+          display: block;
+          height: 100%;
+          svg {
+            max-height: 40px;
+            height: 4vw;
+            min-height: 30px;
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const Svg = styled(motion.svg)``;
+
+export const SearchBar = styled(motion.input)`
+  background-color: ${(props) => props.theme.bgColors.background};
+  border: 2px solid ${(props) => props.theme.borderColors.background};
+  transform-origin: right;
+  padding: 5px;
+  padding-left: 25px;
+  color: ${(props) => props.theme.textColors.background};
+`;
+
+export const Btn = styled(motion.button)``;
+
+export const HomeMain = styled.main`
+  /* overflow-x: hidden; */
+  /* overflow: hidden; */
+`;
+
+export const Loader = styled.section`
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Banner = styled.div<{ $bgImage: string | undefined }>`
+  background-image: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.7)),
+    ${(props) =>
+      `url(${props.$bgImage ? makeImagePath(props.$bgImage) : "none"})`};
+  background-size: cover;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+`;
+
+export const MetaBanner = styled.div`
+  width: 30%;
+  padding-left: 20px;
+  h2.title {
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 0.5em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  p.overview {
+    line-height: 1.2;
+  }
+`;
+
+export const Slider = styled.div`
+  width: 100%;
+  margin-top: 20px;
+  /* overflow-x: scroll; */
+  /* overflow-x: hidden; */
+`;
+
+export const Row = styled(motion.div)`
+  position: relative;
+  /* overflow: hidden; */
+  /* overflow-x: scroll; */
+`;
+
+export const BoxsContainer = styled.div`
+  position: relative;
+  padding: 0 20px;
+  width: 210%;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(14, 1fr);
+`;
+
+export const Box = styled(motion.div)`
+  cursor: pointer;
+  /* width: 100%; */
+  /* min-width: ; */
+  overflow: hidden;
+  border-radius: 10px;
+`;
+
+export const SliderImage = styled.img`
+  max-width: 100%;
+`;
+
+export const SlideBtn = styled(motion.button)`
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  top: 50%;
+  font-size: 5rem;
+  transform: translateY(-50%);
+
+  padding: 0 1%;
+  &.SlideBtn-left {
+    left: 0;
+    transform-origin: left top;
+    /* background-image(); */
+  }
+
+  &.SlideBtn-right {
+    right: 0;
+    transform-origin: right top;
+    text-align: right;
+  }
+`;
