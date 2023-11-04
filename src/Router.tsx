@@ -7,6 +7,7 @@ import Home from "./Routes/Home";
 import Genre from "./Routes/Genre";
 import Search from "./Routes/Search";
 import ErrorPage from "./Routes/ErrorPage";
+import ModalPage from "./Components/ModalPage";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
         path: "/browse",
         element: <Home />,
         children: [
+          { path: "/browse/modal/:id", element: <ModalPage /> },
           { path: "genre/:id", element: <Genre /> },
           { path: "my-list", element: null },
           { path: "genre/original-audio", element: null },

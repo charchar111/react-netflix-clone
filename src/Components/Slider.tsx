@@ -9,13 +9,20 @@ import { makeImagePath } from "../util";
 import {
   Box,
   BoxsContainer,
+  Info,
   Row,
   SlideBtn,
   Slider,
   SliderImage,
 } from "./component";
 import { useState } from "react";
-import { sliderBtnVariant, sliderVariant } from "../variants";
+import {
+  sliderBoxVariant,
+  sliderBtnVariant,
+  sliderInfoVariant,
+  sliderVariant,
+} from "../variants";
+import { useNavigate } from "react-router-dom";
 
 const OFFSET = 6;
 
@@ -24,12 +31,12 @@ export default function Sliders({
 }: {
   data: IApiMovieDefault | undefined;
 }) {
+  const navigate = useNavigate();
   const [disableSlide, setDisableSlide] = useState(false);
   const [sliderInitialItem, setSliderInitialItem] = useState(0);
   const [isHoverSlider, setIsHoverSlider] = useState(false);
   const [slideDirection, setSlideDirection] = useState("left");
-  console.log("slider");
-  console.log(sliderInitialItem);
+
   const onMouseEnterRow = function () {
     setIsHoverSlider(true);
   };
@@ -39,9 +46,10 @@ export default function Sliders({
   };
 
   const onClickSliderElement = function (
-    event: React.MouseEvent<HTMLDivElement>
+    event: React.MouseEvent<HTMLDivElement>,
+    movieId: number
   ) {
-    console.log(event);
+    navigate(`/browse/modal/${movieId}`);
   };
 
   const onClickSliderNextBtn = function (
@@ -120,17 +128,17 @@ export default function Sliders({
               .slice(OFFSET * sliderInitialItem, OFFSET * sliderInitialItem + 6)
               .map((element, index) => (
                 <Box
-                  whileHover={{
-                    scale: 1.3,
-                    y: -30,
-                    zIndex: 2,
-                    transition: { duration: 0.2, delay: 0.5, type: "tween" },
-                  }}
+                  onClick={(event) => onClickSliderElement(event, element.id)}
+                  variants={sliderBoxVariant}
+                  whileHover="whileHover"
                   key={element.id}
                 >
                   <SliderImage
                     src={makeImagePath(element.poster_path, "300")}
                   />
+                  <Info variants={sliderInfoVariant}>
+                    <h4>{element.title}</h4>
+                  </Info>
                 </Box>
               ))}
           </BoxsContainer>

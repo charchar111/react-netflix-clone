@@ -18,6 +18,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { IApiMovieDefault } from "../Types";
 import { makeImagePath } from "../util";
 import Sliders from "../Components/Slider";
+import { AnimatePresence } from "framer-motion";
 
 function Home() {
   const { isPending, error, data } = useQuery<IApiMovieDefault>({
@@ -39,7 +40,8 @@ function Home() {
 
       <Sliders data={data} />
 
-      <Outlet></Outlet>
+      <Outlet />
+
       <ReactQueryDevtools initialIsOpen={false} />
     </HomeMain>
   );

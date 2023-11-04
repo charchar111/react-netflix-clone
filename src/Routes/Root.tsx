@@ -40,7 +40,6 @@ function Root() {
   return (
     <div className="Root">
       <Headers></Headers>
-
       <Outlet />
     </div>
   );

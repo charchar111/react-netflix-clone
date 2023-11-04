@@ -189,3 +189,28 @@ export const SlideBtn = styled(motion.button)`
     text-align: right;
   }
 `;
+
+export const Info = styled(motion.div)`
+  padding: 10px 10px 20px;
+
+  background-color: ${(props) => props.theme.bgColors.modal};
+  opacity: 0;
+  /* opacity: 1; */
+  /* 테스트ㅇ용 임시 설정 */
+
+  h4 {
+    text-align: center;
+    font-size: 17px;
+  }
+`;
+
+export const ModalOverlay = styled(motion.div)`
+  background-color: red;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 10;
+`;

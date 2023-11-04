@@ -72,3 +72,19 @@ export const sliderBtnVariant = {
     transform: "scaleX(1.1) translateY(-50%)",
   },
 };
+
+export const sliderBoxVariant = {
+  whileHover: {
+    scale: 1.3,
+    y: -30,
+    zIndex: 2,
+    transition: { duration: 0.2, delay: 0.5, type: "tween" },
+  },
+};
+
+export const sliderInfoVariant = {
+  whileHover: {
+    opacity: 1,
+    transition: { duration: 0.2, delay: 0.5, type: "tween" },
+  },
+};

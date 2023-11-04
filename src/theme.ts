@@ -8,6 +8,7 @@ export const darkTheme: DefaultTheme = {
     surface2: "#b2bec3",
     primary: "#74b9ff",
     secondary: "#55efc4",
+    modal: "rgb(40,40,40)",
   },
   textColors: {
     background: "rgb(229,229,229)",

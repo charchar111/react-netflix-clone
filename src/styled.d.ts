@@ -9,6 +9,7 @@ declare module "styled-components" {
       surface2: string;
       primary: string;
       secondary: string;
+      modal: string;
     };
     textColors: {
       background: string;
