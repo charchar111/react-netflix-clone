@@ -46,23 +46,29 @@ export const headerVariant = {
 
 export const sliderVariant = {
   enter: (slideDirection: string) => ({
-    transition: { duration: 2.5, type: "linear" },
-    x: slideDirection === "left" ? window.outerWidth : -window.outerWidth,
+    x:
+      slideDirection === "left"
+        ? window.innerWidth - 10
+        : -window.innerWidth + 10,
   }),
-  place: { x: 0 },
+  place: {
+    x: 0,
+  },
   exit: (slideDirection: string) => ({
-    transition: { duration: 2.5, type: "linear" },
-    x: slideDirection === "left" ? -window.outerWidth : window.outerWidth,
+    x:
+      slideDirection === "left"
+        ? -window.innerWidth + 10
+        : window.innerWidth - 10,
   }),
 };
 
 export const sliderBtnVariant = {
   initial: {
     backgroundColor: "rgba(0,0,0,0)",
-    transform: "scale(1) translateY(-50%)",
+    transform: "scaleX(1) translateY(-50%)",
   },
   animate: {
     backgroundColor: "rgba(0,0,0,0.4)",
-    transform: "scale(1.1) translateY(-50%)",
+    transform: "scaleX(1.1) translateY(-50%)",
   },
 };

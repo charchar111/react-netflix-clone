@@ -1,4 +1,9 @@
-import { AnimatePresence, useAnimate, useAnimation } from "framer-motion";
+import {
+  AnimatePresence,
+  animate,
+  useAnimate,
+  useAnimation,
+} from "framer-motion";
 import { IApiMovieDefault } from "../Types";
 import { makeImagePath } from "../util";
 import {
@@ -12,13 +17,16 @@ import {
 import { useState } from "react";
 import { sliderBtnVariant, sliderVariant } from "../variants";
 
+const OFFSET = 6;
+
 export default function Sliders({
   data,
 }: {
   data: IApiMovieDefault | undefined;
 }) {
-  const [isHoverSlider, setIsHoverSlider] = useState(false);
+  const [disableSlide, setDisableSlide] = useState(false);
   const [sliderInitialItem, setSliderInitialItem] = useState(0);
+  const [isHoverSlider, setIsHoverSlider] = useState(false);
   const [slideDirection, setSlideDirection] = useState("left");
   console.log("slider");
   console.log(sliderInitialItem);
@@ -39,23 +47,23 @@ export default function Sliders({
   const onClickSliderNextBtn = function (
     event: React.MouseEvent<HTMLButtonElement>
   ) {
+    if (!data) return;
+    if (disableSlide) return;
     setSlideDirection("left");
-    setSliderInitialItem((current) => {
-      const newCurrent = current + 7;
-      if (newCurrent > 20) return 14;
-      return newCurrent;
-    });
+    const maxIndex = Math.floor((data.results.length - 1) / OFFSET) - 1;
+    setDisableSlide(true);
+    setSliderInitialItem((current) => (maxIndex === current ? 0 : current + 1));
   };
 
   const onClickSliderPrevtBtn = function (
     event: React.MouseEvent<HTMLButtonElement>
   ) {
+    if (!data) return;
+    if (disableSlide) return;
     setSlideDirection("right");
-    setSliderInitialItem((current) => {
-      const newCurrent = current - 7;
-      if (newCurrent < 0) return 0;
-      return newCurrent;
-    });
+    const maxIndex = Math.floor((data.results.length - 1) / OFFSET) - 1;
+    setDisableSlide(true);
+    setSliderInitialItem((current) => (maxIndex === current ? 0 : current + 1));
   };
 
   return (
@@ -92,31 +100,41 @@ export default function Sliders({
           </>
         )}
 
-        <BoxsContainer className="row-wrapper">
-          <AnimatePresence initial={false} custom={slideDirection} mode="wait">
-            {data?.results.map(
-              (element, index) =>
-                index >= sliderInitialItem &&
-                index < sliderInitialItem + 13 && (
-                  <Box
-                    variants={sliderVariant}
-                    custom={slideDirection}
-                    // initial="enter"
-                    // animate="place"
-                    exit="exit"
-                    key={index}
-                    onClick={onClickSliderElement}
-                    className={`row-item${index}`}
-                  >
-                    <SliderImage
-                      src={makeImagePath(element.poster_path, "300")}
-                      alt=""
-                    />
-                  </Box>
-                )
-            )}
-          </AnimatePresence>
-        </BoxsContainer>
+        <AnimatePresence
+          custom={slideDirection}
+          onExitComplete={() => setDisableSlide(false)}
+          initial={false}
+        >
+          <BoxsContainer
+            key={sliderInitialItem}
+            className="row-wrapper"
+            variants={sliderVariant}
+            custom={slideDirection}
+            initial="enter"
+            animate="place"
+            exit="exit"
+            transition={{ duration: 0.5, type: "tween" }}
+          >
+            {data?.results
+              .slice(1)
+              .slice(OFFSET * sliderInitialItem, OFFSET * sliderInitialItem + 6)
+              .map((element, index) => (
+                <Box
+                  whileHover={{
+                    scale: 1.3,
+                    y: -30,
+                    zIndex: 2,
+                    transition: { duration: 0.2, delay: 0.5, type: "tween" },
+                  }}
+                  key={element.id}
+                >
+                  <SliderImage
+                    src={makeImagePath(element.poster_path, "300")}
+                  />
+                </Box>
+              ))}
+          </BoxsContainer>
+        </AnimatePresence>
       </Row>
     </Slider>
   );

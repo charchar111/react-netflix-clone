@@ -128,42 +128,49 @@ export const MetaBanner = styled.div`
 `;
 
 export const Slider = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  /* overflow-x: scroll; */
-  /* overflow-x: hidden; */
+  margin-top: -20px;
 `;
 
 export const Row = styled(motion.div)`
   position: relative;
-  /* overflow: hidden; */
-  /* overflow-x: scroll; */
+  overflow: hidden;
+  padding: 7vw 0;
+  height: 25vw;
 `;
 
-export const BoxsContainer = styled.div`
-  position: relative;
-  padding: 0 20px;
-  width: 210%;
+export const BoxsContainer = styled(motion.div)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(14, 1fr);
+  gap: 5px;
+  grid-template-columns: repeat(6, 1fr);
 `;
 
 export const Box = styled(motion.div)`
   cursor: pointer;
-  /* width: 100%; */
-  /* min-width: ; */
+
   overflow: hidden;
   border-radius: 10px;
+  height: fit-content;
+
+  &:first-of-type {
+    transform-origin: center left;
+  }
+
+  &:last-of-type {
+    transform-origin: center right;
+  }
 `;
 
 export const SliderImage = styled.img`
   max-width: 100%;
+  position: relative;
 `;
 
 export const SlideBtn = styled(motion.button)`
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   height: 100%;
   top: 50%;
   font-size: 5rem;
