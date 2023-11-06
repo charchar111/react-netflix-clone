@@ -128,6 +128,7 @@ export default function Sliders({
               .slice(OFFSET * sliderInitialItem, OFFSET * sliderInitialItem + 6)
               .map((element, index) => (
                 <Box
+                  layoutId={element.id + ""}
                   onClick={(event) => onClickSliderElement(event, element.id)}
                   variants={sliderBoxVariant}
                   whileHover="whileHover"

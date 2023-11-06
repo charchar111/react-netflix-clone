@@ -1,17 +1,20 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useMatch, useNavigate, useParams } from "react-router-dom";
 import {
   Banner,
   Box,
   BoxsContainer,
   HomeMain,
+  ImgBox,
   Loader,
   MetaBanner,
+  ModalBox,
+  ModalOverlay,
   Row,
   Slider,
   SliderImage,
 } from "../Components/component";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getMovieDefault } from "../api";
 import { useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -26,7 +29,20 @@ function Home() {
     queryFn: () => getMovieDefault("movie/now_playing"),
   });
 
-  console.log(data);
+  // console.log(data);
+  const navigate = useNavigate();
+  const match = useMatch("/browse/modal/:id");
+
+  const DataForMovieModal1 =
+    match?.params.id &&
+    data?.results.find((element) =>
+      !match.params.id
+        ? false
+        : String(element.id) === match.params.id
+        ? true
+        : false
+    );
+  // console.log("DataForMovieModal1", DataForMovieModal1);
 
   return (
     <HomeMain className="Home">
@@ -40,9 +56,34 @@ function Home() {
 
       <Sliders data={data} />
 
-      <Outlet />
+      <AnimatePresence>
+        {match ? (
+          <ModalOverlay
+            onClick={() => navigate("/browse")}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <ModalBox layoutId={match?.params.id}>
+              {DataForMovieModal1 && (
+                <>
+                  <ImgBox
+                    className="modal__main-banner"
+                    $src={makeImagePath(DataForMovieModal1.poster_path, "400")}
+                  >
+                    <h1 className="modal__title">{DataForMovieModal1.title}</h1>
+                  </ImgBox>
+                  <p className="modal__overview">
+                    {DataForMovieModal1.overview}
+                  </p>
+                </>
+              )}
+            </ModalBox>
+          </ModalOverlay>
+        ) : null}
+      </AnimatePresence>
 
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <Outlet /> */}
     </HomeMain>
   );
 }

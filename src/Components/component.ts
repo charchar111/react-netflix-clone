@@ -205,7 +205,7 @@ export const Info = styled(motion.div)`
 `;
 
 export const ModalOverlay = styled(motion.div)`
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -213,4 +213,46 @@ export const ModalOverlay = styled(motion.div)`
   right: 0;
 
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ModalBox = styled(motion.div)`
+  width: 40%;
+  min-width: 340px;
+  border-radius: 15px;
+
+  background-color: ${(props) => props.theme.bgColors.modal};
+  padding: 10px;
+  box-sizing: border-box;
+  .modal__title {
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+    top: 90%;
+    left: 10%;
+  }
+
+  .modal__overview {
+  }
+`;
+
+export const ImgBox = styled.div<{ $src: string | undefined }>`
+  width: 80%;
+  min-width: 320px;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background-image: ${(props) =>
+    `linear-gradient(transparent 40%, rgba(20,20,20,1)),url(${props.$src})`};
+`;
+
+export const SearchForm = styled.form`
+  display: flex;
+  align-items: center;
 `;

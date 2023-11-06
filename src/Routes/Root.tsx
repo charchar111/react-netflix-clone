@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { searchOpenAtom } from "../atom";
 
 import { useEffect } from "react";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function Root() {
   const [searchOpen, setSearchOpen] = useRecoilState(searchOpenAtom);
@@ -41,6 +42,7 @@ function Root() {
     <div className="Root">
       <Headers></Headers>
       <Outlet />
+      <ReactQueryDevtools initialIsOpen={false} />
     </div>
   );
 }

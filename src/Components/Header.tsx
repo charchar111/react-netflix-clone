@@ -1,5 +1,13 @@
 import { Link, useLocation, useMatch, useParams } from "react-router-dom";
-import { Btn, Circle, Header, Nav, SearchBar, Svg } from "./component";
+import {
+  Btn,
+  Circle,
+  Header,
+  Nav,
+  SearchBar,
+  SearchForm,
+  Svg,
+} from "./component";
 import {
   motion,
   useAnimation,
@@ -11,11 +19,12 @@ import { headerVariant, logoVariants, searchBarVariant } from "../variants";
 import { useRecoilState } from "recoil";
 import { searchOpenAtom } from "../atom";
 import { useEffect } from "react";
+import HeaderSearchForm from "./HeaderSearchForm";
 
 function Headers() {
   const pathname = useLocation().pathname;
-  const [searchOpen, setSearchOpen] = useRecoilState(searchOpenAtom);
-  const inputAnimation = useAnimation();
+  // const [searchOpen, setSearchOpen] = useRecoilState(searchOpenAtom);
+  // const inputAnimation = useAnimation();
   const headerAnimation = useAnimation();
 
   const { scrollY } = useScroll();
@@ -34,28 +43,9 @@ function Headers() {
   // };
 
   // 방법2
-  const toggleSearchBar = function () {
-    setSearchOpen((current) => !current);
-  };
-
-  const handler1 = function () {
-    if (!searchOpen) {
-      inputAnimation.start({
-        opacity: 0,
-        scaleX: 0,
-      });
-    } else {
-      inputAnimation.start({
-        opacity: 1,
-        scaleX: 1,
-        transition: {
-          type: "tween",
-        },
-      });
-    }
-  };
-
-  useEffect(handler1, [searchOpen]);
+  // const toggleSearchBar = function () {
+  //   setSearchOpen((current) => !current);
+  // };
 
   return (
     <Header variants={headerVariant} animate={headerAnimation}>
@@ -117,28 +107,7 @@ function Headers() {
           </div>
           <div className="header-ul__column2">
             <li className="search-bar">
-              <SearchBar
-                animate={inputAnimation}
-                id="header__search-bar"
-                variants={searchBarVariant}
-                // custom={searchOpen}
-                initial="initial"
-                // animate="animate"
-                placeholder="search for content"
-              />
-
-              <Btn
-                className="searchBar-btn"
-                variants={searchBarVariant}
-                custom={searchOpen}
-                animate="animateIcon"
-                onClick={toggleSearchBar}
-              >
-                <i
-                  id="header__search-icon"
-                  className="fa-solid fa-magnifying-glass"
-                ></i>
-              </Btn>
+              <HeaderSearchForm />
             </li>
             <li>
               <button>키즈</button>

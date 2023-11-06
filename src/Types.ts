@@ -32,3 +32,7 @@ enum OriginalLanguage {
   En = "en",
   Uk = "uk",
 }
+
+export interface IHeaderSearchForm {
+  keyword: string;
+}
