@@ -38,7 +38,7 @@ height: 300vh;
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: `${process.env.PUBLIC_URL}/`,
     element: (
       <>
         <ThemeProvider theme={darkTheme}>

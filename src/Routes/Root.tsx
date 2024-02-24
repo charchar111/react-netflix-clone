@@ -8,7 +8,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function Root() {
   const [searchOpen, setSearchOpen] = useRecoilState(searchOpenAtom);
-
+  console.log("home", process.env.PUBLIC_URL);
   const body = document.body;
 
   const pathname = useLocation().pathname;
