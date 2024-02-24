@@ -31,7 +31,7 @@ function Home() {
 
   // console.log(data);
   const navigate = useNavigate();
-  const match = useMatch("/browse/modal/:id");
+  const match = useMatch(`${process.env.PUBLIC_URL}/browse/modal/:id`);
 
   const DataForMovieModal1 =
     match?.params.id &&
@@ -59,7 +59,7 @@ function Home() {
       <AnimatePresence>
         {match ? (
           <ModalOverlay
-            onClick={() => navigate("/browse")}
+            onClick={() => navigate(`${process.env.PUBLIC_URL}/browse`)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

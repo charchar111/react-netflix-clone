@@ -50,21 +50,21 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/browse",
+        path: "browse",
         element: <Home />,
         children: [
-          { path: "/browse/modal/:id", element: <ModalPage /> },
+          { path: "modal/:id", element: <ModalPage /> },
           { path: "genre/:id", element: <Genre /> },
           { path: "my-list", element: null },
           { path: "genre/original-audio", element: null },
         ],
       },
       {
-        path: "/latest",
-        element: <Search />,
+        path: "latest",
+        element: <Home />,
       },
       {
-        path: "/search",
+        path: "search",
         element: <Search />,
       },
     ],

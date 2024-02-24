@@ -5,6 +5,7 @@ import { searchOpenAtom } from "../atom";
 
 import { useEffect } from "react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Console } from "console";
 
 function Root() {
   const [searchOpen, setSearchOpen] = useRecoilState(searchOpenAtom);
@@ -15,7 +16,7 @@ function Root() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (pathname === "/") navigate("/browse");
+    if (pathname === `${process.env.PUBLIC_URL}`) navigate("browse");
   }, [pathname, navigate]);
 
   useEffect(() => {

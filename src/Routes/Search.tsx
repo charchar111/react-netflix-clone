@@ -35,5 +35,9 @@ export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   console.log(searchParams.get("keyword"));
 
-  return <HomeMain className="Home">adsa</HomeMain>;
+  return (
+    <HomeMain className="Home">
+      검색 결과 기능은 아직 구현되지 않았습니다.
+    </HomeMain>
+  );
 }

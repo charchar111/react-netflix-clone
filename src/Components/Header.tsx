@@ -53,7 +53,7 @@ function Headers() {
         <ul>
           <div className="header-ul__column1">
             <li className="svg-logo">
-              <Link className="svg" to="/browse">
+              <Link className="svg" to="browse">
                 <Svg
                   variants={logoVariants}
                   whileHover="active"
@@ -69,38 +69,39 @@ function Headers() {
               </Link>
             </li>
             <li>
-              <Link to="/browse">홈</Link>
-              {pathname == "/browse" ? (
+              <Link to="browse">홈</Link>
+              {pathname == `${process.env.PUBLIC_URL}/browse` ? (
                 <Circle layoutId="header-circle" />
               ) : null}
             </li>
             <li>
-              <Link to="/browse/genre/83">시리즈</Link>
-              {pathname == "/browse/genre/83" ? (
+              <Link to="browse/genre/83">시리즈</Link>
+              {pathname == `${process.env.PUBLIC_URL}/browse/genre/83` ? (
                 <Circle layoutId="header-circle" />
               ) : null}
             </li>
             <li>
-              <Link to="/browse/genre/34399">영화</Link>
-              {pathname == "/browse/genre/34399" ? (
+              <Link to="browse/genre/34399">영화</Link>
+              {pathname == `${process.env.PUBLIC_URL}/browse/genre/34399` ? (
                 <Circle layoutId="header-circle" />
               ) : null}
             </li>
             <li>
-              <Link to="/latest">NEW! 요즘 대세 콘텐츠</Link>
-              {pathname == "/latest" ? (
+              <Link to="latest">NEW! 요즘 대세 콘텐츠</Link>
+              {pathname == `${process.env.PUBLIC_URL}/latest` ? (
                 <Circle layoutId="header-circle" />
               ) : null}
             </li>
             <li>
-              <Link to="/browse/my-list">내가 찜한 리스트</Link>
-              {pathname == "/browse/my-list" ? (
+              <Link to="browse/my-list">내가 찜한 리스트</Link>
+              {pathname == `${process.env.PUBLIC_URL}/browse/my-list` ? (
                 <Circle layoutId="header-circle" />
               ) : null}
             </li>
             <li>
-              <Link to="/browse/genre/original-audio">언어별로 찾아보기</Link>
-              {pathname == "/browse/genre/original-audio" ? (
+              <Link to="browse/genre/original-audio">언어별로 찾아보기</Link>
+              {pathname ==
+              `${process.env.PUBLIC_URL}/browse/genre/original-audio` ? (
                 <Circle layoutId="header-circle" />
               ) : null}
             </li>

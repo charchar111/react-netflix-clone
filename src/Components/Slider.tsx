@@ -49,7 +49,7 @@ export default function Sliders({
     event: React.MouseEvent<HTMLDivElement>,
     movieId: number
   ) {
-    navigate(`/browse/modal/${movieId}`);
+    navigate(`${process.env.PUBLIC_URL}/browse/modal/${movieId}`);
   };
 
   const onClickSliderNextBtn = function (

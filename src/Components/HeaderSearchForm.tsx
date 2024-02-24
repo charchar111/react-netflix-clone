@@ -38,7 +38,7 @@ export default function HeaderSearchForm() {
 
   const onValid = function (data: IHeaderSearchForm) {
     console.log(data);
-    navigate(`/search?keyword=${data.keyword}`);
+    navigate(`${process.env.PUBLIC_URL}/search?keyword=${data.keyword}`);
   };
   const onInValid = function () {};
 
