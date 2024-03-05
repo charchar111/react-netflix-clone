@@ -10,24 +10,33 @@ https://charchar111.github.io/react-netflix-clone/
 
 ## 컨셉
 
-이 프로젝트는 영화 및 드라마 정보를 보여주는 사이트이며 react, react-query, styled-components, framer-motion의 공부를 위해 제작하였습니다.
+넷플릭스에서 영감을 받은 이 프로젝트는
+
+- 유명한 영화와 드라마의 정보를 제공
+- 부드러운 화면 전환 방식과 상호작용, 애니메이션 등 유저의 경험 개선
+  에 중점을 두었습니다.
 
 ## 기능
-- [2차 인증(email, 휴대폰 메시지) 기반의 로그인](#인증)
-- ISR 방식의 데이터 게시(중고상품, 게시글)
-  - 수동 페이지네이션 방식의 데이터 인덱싱
- 
-- geolocation api를 이용해 저장한 위치 정보를 유저 간 상호 작용에 이용
 
- ## 기술 스택
 
+## 기술 스택
+### React
+
+### Recoil
+
+### styled-component
+
+### framer-motion
+
+### react-query
 
 ## 기능 세부사항
 
 ### 인증
 
 ## 이슈-해결방안
-### tailwindCSS에 ambitary value 할당 문제
+### 
 #### 문제
+#### 해결방안
 
 #### 해결방안
