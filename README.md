@@ -18,7 +18,7 @@ https://charchar111.github.io/react-netflix-clone/
 - React
 - [styled-component](#스타일-컴포넌트와-atomic-컴포넌트-디자인-패턴)
 - [Recoil](#Recoil-redux와의-비교)
-- [framer-motion](#Client-side-routing과 애니메이션)
+- [framer-motion](#Client-side-routing과-애니메이션)
 - [react-query](#데이터-캐싱)
 
 ## 세부사항
